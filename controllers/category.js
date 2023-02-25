@@ -1,6 +1,6 @@
 const db = require("../models");
 const Category = db.category;
-const Soal = db.soal;
+const Soal = db.quizzes;
 
 exports.create = async (req, res) => {
     try {

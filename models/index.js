@@ -20,14 +20,14 @@ const db ={};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.soal = require('./quiz')(sequelize, Sequelize);
+db.quizzes = require('./quiz')(sequelize, Sequelize);
 db.category = require('./category')(sequelize, Sequelize);
 
-db.category.hasMany(db.soal, {
+db.category.hasMany(db.quizzes, {
     foreignKey: 'id',
     as: 'soals'
 })
-db.soal.belongsTo(db.category, {
+db.quizzes.belongsTo(db.category, {
     foreignKey: 'id',
     as: 'categories'
 })

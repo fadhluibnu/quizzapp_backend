@@ -1,12 +1,12 @@
 const { Op } = require("sequelize");
 const db = require("../models");
-const Soal = db.soal;
+const Quiz = db.quizzes;
 
 exports.create = async (req, res) => {
     try {
         let data = req.body
         data.image = req.file.filename
-        data = await Soal.create(data)
+        data = await Quiz.create(data)
         res.json({
             message: "quiz create successfully",
             data: data
@@ -20,7 +20,7 @@ exports.create = async (req, res) => {
 }
 exports.getAll = async (req, res) => {
     try {
-        const soal = await Soal.findAll();
+        const soal = await Quiz.findAll();
         res.json({
             message: "quiz retrieved successfully",
             data: soal
@@ -35,7 +35,7 @@ exports.getAll = async (req, res) => {
 exports.update = async (req, res) => {
     const id = req.params.id
     try {
-        let data = await Soal.findByPk(id, { rejectOnEmpty: true })
+        let data = await Quiz.findByPk(id, { rejectOnEmpty: true })
         let body = req.body
         if (req.file != null) {
             body.image = req.file.filename
@@ -57,7 +57,7 @@ exports.update = async (req, res) => {
 exports.delete = async (req, res) => {
     const id = req.params.id
     try {
-        const soal = await Soal.findByPk(id, { rejectOnEmpty: true })
+        const soal = await Quiz.findByPk(id, { rejectOnEmpty: true })
         soal.destroy()
         res.json({
             message: `Data dengan id ${soal.id} berhasil dihapus`
@@ -71,7 +71,7 @@ exports.delete = async (req, res) => {
 }
 exports.getByCategory = async (req, res) => {
     const category  = req.params.category
-    const quizzes = await Soal.findAll({
+    const quizzes = await Quiz.findAll({
         where : {
             category: {
                 [Op.like]: `%${category}%`
@@ -86,7 +86,7 @@ exports.getByCategory = async (req, res) => {
 exports.findOne = async (req, res) => {
     const id = req.params.id
     try {
-        const soal = await Soal.findByPk(id, { rejectOnEmpty: true })
+        const soal = await Quiz.findByPk(id, { rejectOnEmpty: true })
         res.json({
             message: `soal retrived successfully with id=${id}`,
             data: soal
