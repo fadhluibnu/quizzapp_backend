@@ -1,7 +1,8 @@
 module.exports = {
-    HOST: 'localhost',
-    USER: 'root',
-    DB: 'quiz',
+    HOST: 'bfvxjajqjumzvfg8zunc-mysql.services.clever-cloud.com',
+    USER: 'u5pkbjyqvtvtnugh',
+    DB: 'bfvxjajqjumzvfg8zunc',
+  	PASSWORD: 'tomhULafKqgLhyuWLV8m',
     dialect: 'mysql',
     pool: {
         max:5,

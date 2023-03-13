@@ -5,9 +5,7 @@ const Quiz = db.quizzes;
 exports.create = async (req, res) => {
     try {
         let data = req.body
-        if(req.file){
         data.image = req.file.filename
-          }
         data = await Quiz.create(data)
         res.json({
             message: "quiz create successfully",

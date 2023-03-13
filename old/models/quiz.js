@@ -28,7 +28,13 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
         },
         categoryId: {
+            type: Sequelize.STRING,
             type: Sequelize.INTEGER,
+            allowNull: false,
+            references: {         // User belongsTo Company 1:1
+                model: 'categories',
+                key: 'id'
+            }
         },
         pembahasan: {
             type: Sequelize.STRING,

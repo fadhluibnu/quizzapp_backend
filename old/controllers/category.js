@@ -20,7 +20,8 @@ exports.getAll = async (req, res) => {
     try {
         const category = await Category.findAll({
             include: [{
-                model: Soal
+                model: Soal,
+                as: 'soals'
             }],
         });
         res.json({
